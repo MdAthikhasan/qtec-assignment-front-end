@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
+import CartSidebar from "./components/CartSidebar";
+import CheckoutModal from "./components/CheckoutModal";
+import Navbar from "./components/Navbar";
+import { CartProvider } from "./context/CartContext";
+import { useCart } from "./context/useCart";
+import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
 
-function App() {
-  const [count, setCount] = useState(0)
+const AppContent: React.FC = () => {
+  const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const { clearCart } = useCart();
+
+  const handleCheckout = () => {
+    setCartOpen(false);
+    setCheckoutOpen(true);
+  };
+
+  const handleOrderSubmit = () => {
+    clearCart();
+    setTimeout(() => setCheckoutOpen(false), 1500);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar onCartClick={() => setCartOpen(true)} />
+      <CartSidebar
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        onCheckout={handleCheckout}
+      />
+      <CheckoutModal
+        open={checkoutOpen}
+        onClose={() => setCheckoutOpen(false)}
+        onSubmit={handleOrderSubmit}
+      />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+const App: React.FC = () => (
+  <CartProvider>
+    <Router>
+      <AppContent />
+    </Router>
+  </CartProvider>
+);
+
+export default App;
