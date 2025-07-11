@@ -42,13 +42,13 @@ const ProductDetail: React.FC = () => {
         </p>
         <p className="text-sm text-gray-500 mb-4">Stock: {product.stock}</p>
         <button
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors mb-4"
+          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors mb-4 cursor-pointer"
           onClick={() => addToCart(product)}
         >
           Add to Cart
         </button>
         <button
-          className="text-blue-600 underline"
+          className="text-blue-600 underline cursor-pointer"
           onClick={() => navigate(-1)}
         >
           Back to Products

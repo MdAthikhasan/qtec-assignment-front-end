@@ -7,14 +7,19 @@ interface Props {
 }
 
 const CheckoutModal: React.FC<Props> = ({ open, onClose, onSubmit }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  const [form, setForm] = useState({ name: "", email: "", address: "" });
   const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ name, email, address });
+    onSubmit(form);
     setSubmitted(true);
   };
 
@@ -45,25 +50,28 @@ const CheckoutModal: React.FC<Props> = ({ open, onClose, onSubmit }) => {
             <h2 className="text-xl font-bold mb-2">Checkout</h2>
             <input
               type="text"
+              name="name"
               placeholder="Name"
               className="border rounded px-3 py-2"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={form.name}
+              onChange={handleChange}
               required
             />
             <input
               type="email"
+              name="email"
               placeholder="Email"
               className="border rounded px-3 py-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={form.email}
+              onChange={handleChange}
               required
             />
             <textarea
+              name="address"
               placeholder="Address"
               className="border rounded px-3 py-2"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              value={form.address}
+              onChange={handleChange}
               required
             />
             <button
