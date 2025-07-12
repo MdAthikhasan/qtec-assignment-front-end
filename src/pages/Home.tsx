@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "../context/useCart";
 // import { useCart } from "../context/CartContext";
 
+const url = import.meta.env.VITE_APIURL;
 export interface Product {
   _id: string;
   name: string;
@@ -18,7 +19,7 @@ const Home: React.FC = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(`${url}/api/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

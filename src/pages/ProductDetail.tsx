@@ -10,8 +10,9 @@ const ProductDetail: React.FC = () => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  const url = import.meta.env.VITE_APIURL;
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products`)
+    fetch(`${url}/api/products`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((p: Product) => p._id === id);
