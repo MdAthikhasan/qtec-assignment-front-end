@@ -1,4 +1,5 @@
 # Qtec Assignment - Frontend
+<<<<<<< HEAD
 
 This is the frontend for the Qtec Mini E-Commerce SPA built with React, TypeScript, and Tailwind CSS.
 
@@ -67,18 +68,28 @@ You can deploy this app to Netlify, Vercel, or any static hosting. Make sure to 
 For backend setup, see the `/backend/README.md`.
 
 # React + TypeScript + Vite
+=======
+>>>>>>> 74e0e57e5c5c47893947e0dbbd68ec5c4289868a
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Qtec Mini E-Commerce SPA built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Product listing with images, price, and details
+- Product detail page
+- Add to cart, cart sidebar with quantity controls
+- Cart item count badge in navbar
+- Checkout modal with form
+- Cart persistence (localStorage)
+- Responsive, modern UI
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React + TypeScript
+- Tailwind CSS
+- Vite
 
+<<<<<<< HEAD
 ```js
 export default tseslint.config([
   globalIgnores(["dist"]),
@@ -86,14 +97,13 @@ export default tseslint.config([
     files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
+=======
+## Getting Started
+>>>>>>> 74e0e57e5c5c47893947e0dbbd68ec5c4289868a
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 1. Install dependencies
 
+<<<<<<< HEAD
       // Other configs...
     ],
     languageOptions: {
@@ -105,10 +115,15 @@ export default tseslint.config([
     },
   },
 ]);
+=======
+```bash
+npm install
+>>>>>>> 74e0e57e5c5c47893947e0dbbd68ec5c4289868a
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Set API URL
 
+<<<<<<< HEAD
 ```js
 // eslint.config.js
 import reactX from "eslint-plugin-react-x";
@@ -134,4 +149,37 @@ export default tseslint.config([
     },
   },
 ]);
+=======
+Create a `.env` file in the `frontend` directory:
+
+>>>>>>> 74e0e57e5c5c47893947e0dbbd68ec5c4289868a
 ```
+VITE_APIURL=https://qtec-assgnment-backend.onrender.com
+```
+
+
+### 3. Run the app
+
+```bash
+npm run dev
+```
+
+
+## Deployment
+
+You can deploy this app to Netlify, Vercel, or any static hosting. Make sure to set the `VITE_APIURL` environment variable to your backend URL.
+
+## Project Structure
+
+- `src/pages` - Home and ProductDetail pages
+- `src/components` - Navbar, CartSidebar, CheckoutModal
+- `src/context` - Cart context and hook
+
+## Author
+
+- [Md Athik Hassan]
+
+
+
+
+
