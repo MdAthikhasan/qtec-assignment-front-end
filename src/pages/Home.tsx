@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/useCart";
 // import { useCart } from "../context/CartContext";
 
@@ -37,17 +38,19 @@ const Home: React.FC = () => {
           <div
             key={product._id}
             className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center hover:shadow-xl transition-shadow cursor-pointer"
-            onClick={() => (window.location.href = `/product/${product._id}`)}
           >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-40 h-40 object-cover mb-4 rounded"
-            />
+            <Link to={`/product/${product._id}`}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-40 h-40 object-cover mb-4 rounded"
+              />
+            </Link>
+
             <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
             <p className="text-red-600 mb-2">${product.price.toFixed(2)}</p>
             <button
-              className="mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+              className="mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 addToCart(product);
